@@ -1,0 +1,140 @@
+{
+  "last_updated": "2026-08-04",
+  "tcgs": [
+    {
+      "id": "pokemon",
+      "name": "Pokémon TCG",
+      "color": "#FFCB05",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/",
+      "releases": [
+        { "set": "Prismatic Evolutions", "name": "Elite Trainer Box", "type": "ETB", "regions": { "japan": { "date": "2025-01-10" }, "usa": { "date": "2025-02-07" }, "europe": { "date": "2025-02-07" } } },
+        { "set": "Prismatic Evolutions", "name": "Booster Bundle (6 packs)", "type": "Bundle", "regions": { "japan": { "date": "2025-01-10" }, "usa": { "date": "2025-02-07" }, "europe": { "date": "2025-02-07" } } },
+        { "set": "Journey Together", "name": "Elite Trainer Box", "type": "ETB", "regions": { "usa": { "date": "2025-03-28" }, "europe": { "date": "2025-03-28" }, "japan": { "date": null } } },
+        { "set": "Journey Together", "name": "Booster Bundle (6 packs)", "type": "Bundle", "regions": { "japan": { "date": "2025-03-07" }, "usa": { "date": "2025-03-28" }, "europe": { "date": "2025-03-28" } } },
+        { "set": "Destined Rivals", "name": "Elite Trainer Box", "type": "ETB", "regions": { "usa": { "date": "2025-06-13" }, "europe": { "date": "2025-06-13" }, "japan": { "date": null } } },
+        { "set": "Destined Rivals", "name": "Booster Bundle (6 packs)", "type": "Bundle", "regions": { "japan": { "date": "2025-04-25" }, "usa": { "date": "2025-06-13" }, "europe": { "date": "2025-06-13" } } },
+        { "set": "Celestial Storm", "name": "Elite Trainer Box", "type": "ETB", "regions": { "usa": { "date": "2025-09-05" }, "europe": { "date": "2025-09-05" }, "japan": { "date": null } } },
+        { "set": "Celestial Storm", "name": "Booster Bundle (6 packs)", "type": "Bundle", "regions": { "japan": { "date": "2025-06-27" }, "usa": { "date": "2025-09-05" }, "europe": { "date": "2025-09-05" } } },
+
+        { "set": "Mega Evolution - Pitch Black", "name": "Elite Trainer Box", "type": "ETB", "regions": { "usa": { "date": "2025-11-07", "note": "Data estimada" }, "europe": { "date": "2025-11-07", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Pitch Black", "name": "Booster Bundle", "type": "Bundle", "regions": { "usa": { "date": "2025-11-07", "note": "Data estimada" }, "europe": { "date": "2025-11-07", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Chaos Rising", "name": "Elite Trainer Box", "type": "ETB", "regions": { "usa": { "date": "2026-02-06", "note": "Data estimada" }, "europe": { "date": "2026-02-06", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Chaos Rising", "name": "Booster Bundle", "type": "Bundle", "regions": { "usa": { "date": "2026-02-06", "note": "Data estimada" }, "europe": { "date": "2026-02-06", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Perfect Order", "name": "Elite Trainer Box", "type": "ETB", "regions": { "usa": { "date": "2026-05-08", "note": "Data estimada" }, "europe": { "date": "2026-05-08", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Perfect Order", "name": "Booster Bundle", "type": "Bundle", "regions": { "usa": { "date": "2026-05-08", "note": "Data estimada" }, "europe": { "date": "2026-05-08", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Ascended Heroes", "name": "Elite Trainer Box", "type": "ETB", "regions": { "usa": { "date": "2026-08-07", "note": "Data estimada" }, "europe": { "date": "2026-08-07", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Ascended Heroes", "name": "Booster Bundle", "type": "Bundle", "regions": { "usa": { "date": "2026-08-07", "note": "Data estimada" }, "europe": { "date": "2026-08-07", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Phantasmal Flames", "name": "Elite Trainer Box", "type": "ETB", "regions": { "usa": { "date": "2026-11-06", "note": "Data estimada" }, "europe": { "date": "2026-11-06", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Mega Evolution - Phantasmal Flames", "name": "Booster Bundle", "type": "Bundle", "regions": { "usa": { "date": "2026-11-06", "note": "Data estimada" }, "europe": { "date": "2026-11-06", "note": "Data estimada" }, "japan": { "date": null } } }
+      ]
+    },
+    {
+      "id": "onepiece",
+      "name": "One Piece TCG",
+      "color": "#E21B23",
+      "url": "https://en.onepiece-cardgame.com/products/",
+      "releases": [
+        { "set": "OP-14", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-11-29" }, "usa": { "date": "2026-03-27", "note": "Data estimada" }, "europe": { "date": "2026-03-27", "note": "Data estimada" } } },
+        { "set": "OP-15", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-02-28" }, "usa": { "date": "2026-05-29", "note": "Data estimada" }, "europe": { "date": "2026-05-29", "note": "Data estimada" } } },
+        { "set": "OP-16", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-05-23" }, "usa": { "date": "2026-08-28", "note": "Data estimada" }, "europe": { "date": "2026-08-28", "note": "Data estimada" } } },
+        { "set": "OP-17: The World's Strongest Warriors", "name": "Booster Pack", "type": "Booster Pack", "regions": { "japan": { "date": "2026-08-22" }, "usa": { "date": "2026-08-28" }, "europe": { "date": "2026-08-28" } } },
+        { "set": "OP-17: The World's Strongest Warriors", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-08-22" }, "usa": { "date": "2026-08-28" }, "europe": { "date": "2026-08-28" } } },
+        { "set": "OP-17: The World's Strongest Warriors", "name": "Double Pack Set Vol.12", "type": "Special", "regions": { "usa": { "date": "2026-08-28" }, "europe": { "date": "2026-08-28" }, "japan": { "date": null } } },
+        { "set": "EB-05: Heroines Edition vol.2", "name": "Booster Box", "type": "Booster Box", "regions": { "japan": { "date": "2026-10-01", "note": "Outubro 2026" }, "usa": { "date": "2026-10-01", "note": "Outubro 2026" }, "europe": { "date": "2026-10-01", "note": "Outubro 2026" } } },
+        { "set": "Starter Decks ST-32 a ST-36", "name": "Starter Deck (Zoro/Kuzan/Katakuri/Sabo/Kid)", "type": "Starter", "regions": { "japan": { "date": "2026-07-11" }, "usa": { "date": "2026-11-01", "note": "Data estimada" }, "europe": { "date": "2026-11-01", "note": "Data estimada" } } }
+      ]
+    },
+    {
+      "id": "dragonball",
+      "name": "Dragon Ball Super Card Game",
+      "color": "#F97316",
+      "url": "https://www.dbs-cardgame.com/fw/us/product/",
+      "releases": [
+        { "set": "Fusion World FB-04: Blazing Aura", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-02-21" }, "usa": { "date": "2025-02-21" }, "europe": { "date": "2025-02-21" } } },
+        { "set": "Fusion World FB-05", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-05-23" }, "usa": { "date": "2025-05-23" }, "europe": { "date": "2025-05-23" } } },
+        { "set": "Fusion World FB-06", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-08-22", "note": "Data estimada" }, "usa": { "date": "2025-08-22", "note": "Data estimada" }, "europe": { "date": "2025-08-22", "note": "Data estimada" } } },
+        { "set": "Fusion World FB-07", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-11-21", "note": "Data estimada" }, "usa": { "date": "2025-11-21", "note": "Data estimada" }, "europe": { "date": "2025-11-21", "note": "Data estimada" } } },
+        { "set": "Fusion World FB-08", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-02-20", "note": "Data estimada" }, "usa": { "date": "2026-02-20", "note": "Data estimada" }, "europe": { "date": "2026-02-20", "note": "Data estimada" } } },
+        { "set": "Fusion World FB-09", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-05-22", "note": "Data estimada" }, "usa": { "date": "2026-05-22", "note": "Data estimada" }, "europe": { "date": "2026-05-22", "note": "Data estimada" } } },
+        { "set": "Fusion World FB-10", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-08-21", "note": "Data estimada" }, "usa": { "date": "2026-08-21", "note": "Data estimada" }, "europe": { "date": "2026-08-21", "note": "Data estimada" } } },
+        { "set": "Fusion World FB-11", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-11-20", "note": "Data estimada" }, "usa": { "date": "2026-11-20", "note": "Data estimada" }, "europe": { "date": "2026-11-20", "note": "Data estimada" } } }
+      ]
+    },
+    {
+      "id": "yugioh",
+      "name": "Yu-Gi-Oh! TCG",
+      "color": "#5B21B6",
+      "url": "https://www.yugioh-card.com/en/products/",
+      "releases": [
+        { "set": "Rage of the Abyss", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-01-25" }, "usa": { "date": "2025-04-18" }, "europe": { "date": "2025-04-17" } } },
+        { "set": "Doom Breaker", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-04-26" }, "usa": { "date": "2025-07-18" }, "europe": { "date": "2025-07-17" } } },
+        { "set": "Core Set 13", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-07-26", "note": "Data estimada" }, "usa": { "date": "2025-10-17", "note": "Data estimada" }, "europe": { "date": "2025-10-16", "note": "Data estimada" } } },
+        { "set": "Core Set 14", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2025-10-25", "note": "Data estimada" }, "usa": { "date": "2026-01-23", "note": "Data estimada" }, "europe": { "date": "2026-01-22", "note": "Data estimada" } } },
+        { "set": "Core Set 15", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-01-24", "note": "Data estimada" }, "usa": { "date": "2026-04-17", "note": "Data estimada" }, "europe": { "date": "2026-04-16", "note": "Data estimada" } } },
+        { "set": "Core Set 16", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-04-25", "note": "Data estimada" }, "usa": { "date": "2026-07-17", "note": "Data estimada" }, "europe": { "date": "2026-07-16", "note": "Data estimada" } } },
+        { "set": "Core Set 17", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-07-25", "note": "Data estimada" }, "usa": { "date": "2026-10-16", "note": "Data estimada" }, "europe": { "date": "2026-10-15", "note": "Data estimada" } } },
+        { "set": "Core Set 18", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "japan": { "date": "2026-10-24", "note": "Data estimada" }, "usa": { "date": "2027-01-22", "note": "Data estimada" }, "europe": { "date": "2027-01-21", "note": "Data estimada" } } }
+      ]
+    },
+    {
+      "id": "mtg",
+      "name": "Magic: The Gathering",
+      "color": "#1D4ED8",
+      "url": "https://magic.wizards.com/en/products",
+      "releases": [
+        { "set": "Through the Omenpaths", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2025-09-23" }, "europe": { "date": "2025-09-23" }, "japan": { "date": "2025-09-23" } } },
+        { "set": "Through the Omenpaths", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2025-09-23" }, "europe": { "date": "2025-09-23" }, "japan": { "date": "2025-09-23" } } },
+        { "set": "Marvel's Spider-Man", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2025-09-26" }, "europe": { "date": "2025-09-26" }, "japan": { "date": "2025-09-26" } } },
+        { "set": "Marvel's Spider-Man", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2025-09-26" }, "europe": { "date": "2025-09-26" }, "japan": { "date": "2025-09-26" } } },
+        { "set": "Avatar: The Last Airbender", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2025-11-21" }, "europe": { "date": "2025-11-21" }, "japan": { "date": "2025-11-21" } } },
+        { "set": "Avatar: The Last Airbender", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2025-11-21" }, "europe": { "date": "2025-11-21" }, "japan": { "date": "2025-11-21" } } },
+        { "set": "Lorwyn Eclipsed", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2026-01-23" }, "europe": { "date": "2026-01-23" }, "japan": { "date": "2026-01-23" } } },
+        { "set": "Lorwyn Eclipsed", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2026-01-23" }, "europe": { "date": "2026-01-23" }, "japan": { "date": "2026-01-23" } } },
+        { "set": "Teenage Mutant Ninja Turtles", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2026-03-06" }, "europe": { "date": "2026-03-06" }, "japan": { "date": "2026-03-06" } } },
+        { "set": "Teenage Mutant Ninja Turtles", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2026-03-06" }, "europe": { "date": "2026-03-06" }, "japan": { "date": "2026-03-06" } } },
+        { "set": "Secrets of Strixhaven", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2026-04-24" }, "europe": { "date": "2026-04-24" }, "japan": { "date": "2026-04-24" } } },
+        { "set": "Secrets of Strixhaven", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2026-04-24" }, "europe": { "date": "2026-04-24" }, "japan": { "date": "2026-04-24" } } },
+        { "set": "Marvel Super Heroes", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2026-06-26" }, "europe": { "date": "2026-06-26" }, "japan": { "date": "2026-06-26" } } },
+        { "set": "Marvel Super Heroes", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2026-06-26" }, "europe": { "date": "2026-06-26" }, "japan": { "date": "2026-06-26" } } },
+        { "set": "The Hobbit", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2026-08-14" }, "europe": { "date": "2026-08-14" }, "japan": { "date": "2026-08-14" } } },
+        { "set": "The Hobbit", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2026-08-14" }, "europe": { "date": "2026-08-14" }, "japan": { "date": "2026-08-14" } } },
+        { "set": "Reality Fracture", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2026-10-02" }, "europe": { "date": "2026-10-02" }, "japan": { "date": "2026-10-02" } } },
+        { "set": "Reality Fracture", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2026-10-02" }, "europe": { "date": "2026-10-02" }, "japan": { "date": "2026-10-02" } } },
+        { "set": "Star Trek", "name": "Play Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2026-11-13" }, "europe": { "date": "2026-11-13" }, "japan": { "date": "2026-11-13" } } },
+        { "set": "Star Trek", "name": "Collector Booster Box", "type": "Collector Box", "regions": { "usa": { "date": "2026-11-13" }, "europe": { "date": "2026-11-13" }, "japan": { "date": "2026-11-13" } } }
+      ]
+    },
+    {
+      "id": "lorcana",
+      "name": "Disney Lorcana",
+      "color": "#7C3AED",
+      "url": "https://www.disneylorcana.com/en-US/products",
+      "releases": [
+        { "set": "Set 7: Archazia's Island", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2025-05-16" }, "europe": { "date": "2025-05-16" }, "japan": { "date": null, "note": "Não disponível" } } },
+        { "set": "Set 7: Archazia's Island", "name": "Illumineer's Trove", "type": "Special", "regions": { "usa": { "date": "2025-05-16" }, "europe": { "date": "2025-05-16" }, "japan": { "date": null } } },
+        { "set": "Set 8", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2025-08-15", "note": "Data estimada" }, "europe": { "date": "2025-08-15", "note": "Data estimada" }, "japan": { "date": null, "note": "Não disponível" } } },
+        { "set": "Set 9", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2025-11-21", "note": "Data estimada" }, "europe": { "date": "2025-11-21", "note": "Data estimada" }, "japan": { "date": null, "note": "Não disponível" } } },
+        { "set": "Set 10", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2026-02-20", "note": "Data estimada" }, "europe": { "date": "2026-02-20", "note": "Data estimada" }, "japan": { "date": null, "note": "Não disponível" } } },
+        { "set": "Set 11", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2026-05-15", "note": "Data estimada" }, "europe": { "date": "2026-05-15", "note": "Data estimada" }, "japan": { "date": null, "note": "Não disponível" } } },
+        { "set": "Set 12", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2026-08-14", "note": "Data estimada" }, "europe": { "date": "2026-08-14", "note": "Data estimada" }, "japan": { "date": null, "note": "Não disponível" } } },
+        { "set": "Set 13", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2026-11-20", "note": "Data estimada" }, "europe": { "date": "2026-11-20", "note": "Data estimada" }, "japan": { "date": null, "note": "Não disponível" } } }
+      ]
+    },
+    {
+      "id": "riftbound",
+      "name": "Riftbound (League of Legends)",
+      "color": "#C89B3C",
+      "url": "https://www.riftbound.com",
+      "releases": [
+        { "set": "Origins", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2025-09-26" }, "europe": { "date": "2025-09-26" }, "japan": { "date": null, "note": "Não disponível" } } },
+        { "set": "Origins", "name": "Booster Pack (14 cards)", "type": "Booster Pack", "regions": { "usa": { "date": "2025-09-26" }, "europe": { "date": "2025-09-26" }, "japan": { "date": null } } },
+        { "set": "Origins", "name": "Champion Deck (Jinx/Viktor/Lee Sin)", "type": "Starter", "regions": { "usa": { "date": "2025-09-26" }, "europe": { "date": "2025-09-26" }, "japan": { "date": null } } },
+        { "set": "Origins", "name": "Proving Grounds (2-4 player box set)", "type": "Starter", "regions": { "usa": { "date": "2025-09-26" }, "europe": { "date": "2025-09-26" }, "japan": { "date": null } } },
+        { "set": "Vendetta", "name": "Booster Box (24 packs)", "type": "Booster Box", "regions": { "usa": { "date": "2026-08-08", "note": "Data estimada" }, "europe": { "date": "2026-08-08", "note": "Data estimada" }, "japan": { "date": null, "note": "Não disponível" } } },
+        { "set": "Vendetta", "name": "Booster Pack", "type": "Booster Pack", "regions": { "usa": { "date": "2026-08-08", "note": "Data estimada" }, "europe": { "date": "2026-08-08", "note": "Data estimada" }, "japan": { "date": null } } },
+        { "set": "Vendetta", "name": "Pre-Rift Kit (Prerelease)", "type": "Prerelease", "regions": { "usa": { "date": "2026-07-25" }, "europe": { "date": "2026-07-25" }, "japan": { "date": null } } },
+        { "set": "Set 3 (2027)", "name": "Booster Box", "type": "Booster Box", "regions": { "usa": { "date": "2027-01-01", "note": "Data estimada - início 2027" }, "europe": { "date": "2027-01-01", "note": "Data estimada - início 2027" }, "japan": { "date": null, "note": "Não disponível" } } }
+      ]
+    }
+  ]
+}

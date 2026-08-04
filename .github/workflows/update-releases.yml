@@ -1,0 +1,47 @@
+name: Update TCG Releases
+
+on:
+  # Corre todos os dias às 8h UTC (9h em Portugal)
+  schedule:
+    - cron: '0 8 * * *'
+  # Permite correr manualmente
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Run scraper
+        run: python scripts/scraper.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet data/releases.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/releases.json
+          git commit -m "chore: atualizar dados TCG releases [$(date +'%Y-%m-%d')]"
+          git push

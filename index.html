@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCG Release Tracker - Datas de Lançamento</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            border-bottom: 1px solid #334155;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .last-updated {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #475569;
+            border-radius: 20px;
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Region filter */
+        .region-filters {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .region-btn {
+            padding: 6px 14px;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .region-btn:hover, .region-btn.active {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border-color: var(--accent);
+        }
+
+        /* View toggle */
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .view-btn {
+            padding: 6px 14px;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .view-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Timeline view */
+        .timeline {
+            display: none;
+        }
+
+        .timeline.active {
+            display: block;
+        }
+
+        .timeline-month {
+            margin-bottom: 30px;
+        }
+
+        .timeline-month h3 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .timeline-items {
+            display: grid;
+            gap: 12px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            align-items: center;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 16px 20px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+
+        .timeline-item.clickable {
+            cursor: pointer;
+        }
+
+        .timeline-item.clickable:hover {
+            border-color: var(--accent);
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .timeline-info .tcg-name {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-info .release-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .timeline-info .release-type {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-regions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .region-badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .region-badge.japan {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+
+        .region-badge.usa {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+        }
+
+        .region-badge.europe {
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+        }
+
+        /* Grid view */
+        .grid-view {
+            display: none;
+        }
+
+        .grid-view.active {
+            display: block;
+        }
+
+        .tcg-section {
+            margin-bottom: 40px;
+        }
+
+        .tcg-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .tcg-header h2 {
+            font-size: 1.4rem;
+        }
+
+        .releases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 16px;
+        }
+
+        .release-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+        }
+
+        .release-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .release-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .release-card .type-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+        }
+
+        .release-dates {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .date-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 10px;
+            background: var(--bg-card);
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .date-row .region {
+            font-weight: 600;
+        }
+
+        .date-row .date {
+            color: var(--text-secondary);
+        }
+
+        .date-row .note {
+            font-size: 0.75rem;
+            color: var(--warning);
+            font-style: italic;
+        }
+
+        .status-upcoming {
+            color: var(--warning);
+        }
+
+        .status-released {
+            color: var(--success);
+        }
+
+        .status-estimated {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Countdown */
+        .next-release {
+            background: linear-gradient(135deg, #1e3a5f, #1e293b);
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .next-release h3 {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .next-release .release-title {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .next-release .countdown {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 10px;
+        }
+
+        .next-release .countdown-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .releases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 80px 1fr;
+                gap: 10px;
+            }
+
+            .timeline-regions {
+                grid-column: 1 / -1;
+                margin-top: 8px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid #334155;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Upcoming sections by region */
+        .upcoming-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .upcoming-region {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #334155;
+        }
+
+        .upcoming-region h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #334155;
+            color: var(--text-primary);
+        }
+
+        .region-flag-title {
+            margin-right: 6px;
+        }
+
+        .upcoming-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .upcoming-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            font-size: 0.83rem;
+        }
+
+        .upcoming-item .item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .upcoming-item .item-tcg {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .upcoming-item .item-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .upcoming-item .item-set {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .upcoming-item .item-date {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .upcoming-item .item-date .date-text {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .upcoming-item .item-date .days-text {
+            font-size: 0.7rem;
+            color: var(--warning);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TCG Release Tracker</h1>
+        <p>Todas as datas de lançamento de TCGs num só lugar</p>
+        <p class="last-updated" id="lastUpdated">A carregar...</p>
+    </header>
+
+    <div class="container">
+        <!-- Próximos lançamentos por região -->
+        <div class="upcoming-sections" id="upcomingSections">
+            <div class="upcoming-region">
+                <h3><span class="region-flag-title">🇪🇺</span> Próximos - Europa</h3>
+                <div class="upcoming-list" id="upcomingEurope"></div>
+            </div>
+            <div class="upcoming-region">
+                <h3><span class="region-flag-title">🇺🇸</span> Próximos - EUA</h3>
+                <div class="upcoming-list" id="upcomingUsa"></div>
+            </div>
+            <div class="upcoming-region">
+                <h3><span class="region-flag-title">🇯🇵</span> Próximos - Japão</h3>
+                <div class="upcoming-list" id="upcomingJapan"></div>
+            </div>
+        </div>
+
+        <!-- TCG Filters -->
+        <div class="filters" id="tcgFilters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+        </div>
+
+        <!-- Region Filters -->
+        <div class="region-filters">
+            <button class="region-btn active" data-region="all">Todas Regiões</button>
+            <button class="region-btn" data-region="europe">Europa</button>
+            <button class="region-btn" data-region="usa">EUA</button>
+            <button class="region-btn" data-region="japan">Japão</button>
+        </div>
+
+        <!-- Year Filter -->
+        <div class="region-filters">
+            <label style="color:var(--text-secondary);font-size:0.85rem;margin-right:8px;">Ano:</label>
+            <select id="yearFilter" style="padding:6px 14px;border:1px solid #475569;border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);font-size:0.85rem;cursor:pointer;">
+                <option value="all">Todos</option>
+            </select>
+        </div>
+
+        <!-- View Toggle -->
+        <div class="view-toggle">
+            <button class="view-btn active" data-view="timeline">Timeline</button>
+            <button class="view-btn" data-view="grid">Por TCG</button>
+        </div>
+
+        <!-- Timeline View -->
+        <div class="timeline active" id="timelineView">
+            <div class="loading">A carregar dados</div>
+        </div>
+
+        <!-- Grid View -->
+        <div class="grid-view" id="gridView">
+            <div class="loading">A carregar dados</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Dados atualizados automaticamente via GitHub Actions</p>
+        <p>Algumas datas são estimativas e podem mudar. Confirma sempre nos sites oficiais.</p>
+        <p style="margin-top: 10px;">
+            <a href="https://github.com" target="_blank">Ver no GitHub</a>
+        </p>
+    </footer>
+
+    <script>
+        let releasesData = null;
+        let activeFilter = 'all';
+        let activeRegion = 'all';
+        let activeView = 'timeline';
+        let activeYear = 'all';
+
+        // Load data - tenta fetch primeiro, fallback para dados inline
+        async function loadData() {
+            try {
+                const response = await fetch('./data/releases.json');
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                releasesData = await response.json();
+            } catch (error) {
+                console.warn('Fetch falhou, a usar dados inline:', error);
+                releasesData = getInlineData();
+            }
+            document.getElementById('lastUpdated').textContent = 
+                `Última atualização: ${formatDate(releasesData.last_updated)}`;
+            initFilters();
+            renderUpcoming();
+            render();
+        }
+
+        function getInlineData() {
+            return {"last_updated":"2026-08-04","tcgs":[{"id":"pokemon","name":"Pokémon TCG","color":"#FFCB05","releases":[{"set":"Prismatic Evolutions","name":"Elite Trainer Box","type":"ETB","regions":{"japan":{"date":"2025-01-10"},"usa":{"date":"2025-02-07"},"europe":{"date":"2025-02-07"}}},{"set":"Prismatic Evolutions","name":"Booster Bundle (6 packs)","type":"Bundle","regions":{"japan":{"date":"2025-01-10"},"usa":{"date":"2025-02-07"},"europe":{"date":"2025-02-07"}}},{"set":"Journey Together","name":"Elite Trainer Box","type":"ETB","regions":{"usa":{"date":"2025-03-28"},"europe":{"date":"2025-03-28"},"japan":{"date":null}}},{"set":"Journey Together","name":"Booster Bundle (6 packs)","type":"Bundle","regions":{"japan":{"date":"2025-03-07"},"usa":{"date":"2025-03-28"},"europe":{"date":"2025-03-28"}}},{"set":"Destined Rivals","name":"Elite Trainer Box","type":"ETB","regions":{"usa":{"date":"2025-06-13"},"europe":{"date":"2025-06-13"},"japan":{"date":null}}},{"set":"Celestial Storm","name":"Elite Trainer Box","type":"ETB","regions":{"usa":{"date":"2025-09-05"},"europe":{"date":"2025-09-05"},"japan":{"date":null}}}]},{"id":"onepiece","name":"One Piece TCG","color":"#E21B23","releases":[{"set":"OP-10: Royal Blood","name":"Booster Box (24 packs)","type":"Booster Box","regions":{"japan":{"date":"2025-02-22"},"usa":{"date":"2025-06-27"},"europe":{"date":"2025-06-27"}}},{"set":"OP-11","name":"Booster Box (24 packs)","type":"Booster Box","regions":{"japan":{"date":"2025-05-24"},"usa":{"date":"2025-09-26","note":"Data estimada"},"europe":{"date":"2025-09-26","note":"Data estimada"}}}]},{"id":"dragonball","name":"Dragon Ball Super Card Game","color":"#F97316","releases":[{"set":"Fusion World FB-05","name":"Booster Box (24 packs)","type":"Booster Box","regions":{"japan":{"date":"2025-05-23"},"usa":{"date":"2025-05-23"},"europe":{"date":"2025-05-23"}}}]},{"id":"yugioh","name":"Yu-Gi-Oh! TCG","color":"#5B21B6","releases":[{"set":"Doom Breaker","name":"Booster Box (24 packs)","type":"Booster Box","regions":{"japan":{"date":"2025-04-26"},"usa":{"date":"2025-07-18"},"europe":{"date":"2025-07-17"}}}]},{"id":"mtg","name":"Magic: The Gathering","color":"#1D4ED8","releases":[{"set":"Final Fantasy","name":"Play Booster Box (36 packs)","type":"Booster Box","regions":{"usa":{"date":"2025-06-13"},"europe":{"date":"2025-06-13"},"japan":{"date":"2025-06-13"}}},{"set":"Final Fantasy","name":"Collector Booster Box","type":"Collector Box","regions":{"usa":{"date":"2025-06-13"},"europe":{"date":"2025-06-13"},"japan":{"date":"2025-06-13"}}}]},{"id":"lorcana","name":"Disney Lorcana","color":"#7C3AED","releases":[{"set":"Set 7: Archazia's Island","name":"Booster Box (24 packs)","type":"Booster Box","regions":{"usa":{"date":"2025-05-16"},"europe":{"date":"2025-05-16"},"japan":{"date":null,"note":"Não disponível"}}}]}]};
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return 'N/A';
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('pt-PT', { 
+                year: 'numeric', month: 'long', day: 'numeric' 
+            });
+        }
+
+        function formatDateShort(dateStr) {
+            if (!dateStr) return 'N/A';
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('pt-PT', { 
+                day: '2-digit', month: 'short'
+            });
+        }
+
+        function daysUntil(dateStr) {
+            const target = new Date(dateStr + 'T00:00:00');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+            return diff;
+        }
+
+        function initFilters() {
+            const container = document.getElementById('tcgFilters');
+            releasesData.tcgs.forEach(tcg => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.dataset.filter = tcg.id;
+                btn.textContent = tcg.name;
+                btn.style.borderColor = tcg.color;
+                container.appendChild(btn);
+            });
+
+            // Filter click handlers
+            container.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeFilter = btn.dataset.filter;
+                    render();
+                });
+            });
+
+            // Region filter handlers
+            document.querySelectorAll('.region-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeRegion = btn.dataset.region;
+                    render();
+                });
+            });
+
+            // View toggle handlers
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeView = btn.dataset.view;
+                    document.getElementById('timelineView').classList.toggle('active', activeView === 'timeline');
+                    document.getElementById('gridView').classList.toggle('active', activeView === 'grid');
+                    render();
+                });
+            });
+
+            // Year filter
+            const yearSelect = document.getElementById('yearFilter');
+            const years = new Set();
+            releasesData.tcgs.forEach(tcg => {
+                tcg.releases.forEach(release => {
+                    Object.values(release.regions).forEach(info => {
+                        if (info && info.date) {
+                            years.add(info.date.substring(0, 4));
+                        }
+                    });
+                });
+            });
+            [...years].sort().forEach(year => {
+                const opt = document.createElement('option');
+                opt.value = year;
+                opt.textContent = year;
+                yearSelect.appendChild(opt);
+            });
+            yearSelect.addEventListener('change', () => {
+                activeYear = yearSelect.value;
+                render();
+            });
+        }
+
+        function renderUpcoming() {
+            const regions = ['europe', 'usa', 'japan'];
+            const containers = {
+                europe: document.getElementById('upcomingEurope'),
+                usa: document.getElementById('upcomingUsa'),
+                japan: document.getElementById('upcomingJapan')
+            };
+
+            regions.forEach(region => {
+                const upcoming = [];
+                releasesData.tcgs.forEach(tcg => {
+                    tcg.releases.forEach(release => {
+                        const info = release.regions[region];
+                        if (info && info.date) {
+                            const days = daysUntil(info.date);
+                            if (days > 0) {
+                                upcoming.push({
+                                    name: release.name,
+                                    set: release.set || '',
+                                    tcg: tcg.name,
+                                    color: tcg.color,
+                                    date: info.date,
+                                    days: days,
+                                    note: info.note || null
+                                });
+                            }
+                        }
+                    });
+                });
+
+                upcoming.sort((a, b) => a.days - b.days);
+                const top = upcoming.slice(0, 2);
+
+                let html = '';
+                top.forEach(item => {
+                    html += `
+                        <div class="upcoming-item" style="border-left-color:${item.color}">
+                            <div class="item-info">
+                                <span class="item-tcg" style="color:${item.color}">${item.tcg}</span>
+                                <span class="item-name">${item.name}</span>
+                                <span class="item-set">${item.set}</span>
+                            </div>
+                            <div class="item-date">
+                                <div class="date-text">${formatDateShort(item.date)}</div>
+                                <div class="days-text">${item.days}d</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                containers[region].innerHTML = html || '<p style="color:var(--text-secondary);font-size:0.85rem;">Sem lançamentos próximos</p>';
+            });
+        }
+
+        function getRegionLabel(region) {
+            const labels = { japan: 'Japão', usa: 'EUA', europe: 'Europa' };
+            return labels[region] || region;
+        }
+
+        function getRegionFlag(region) {
+            const flags = { japan: '\u{1F1EF}\u{1F1F5}', usa: '\u{1F1FA}\u{1F1F8}', europe: '\u{1F1EA}\u{1F1FA}' };
+            return flags[region] || '';
+        }
+
+        function render() {
+            renderTimeline();
+            renderGrid();
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('timelineView');
+            const allReleases = [];
+
+            releasesData.tcgs.forEach(tcg => {
+                if (activeFilter !== 'all' && tcg.id !== activeFilter) return;
+                
+                tcg.releases.forEach(release => {
+                    const regions = activeRegion === 'all' 
+                        ? Object.entries(release.regions)
+                        : [[activeRegion, release.regions[activeRegion]]].filter(([_, v]) => v);
+
+                    regions.forEach(([region, info]) => {
+                        if (info && info.date) {
+                            if (activeYear !== 'all' && !info.date.startsWith(activeYear)) return;
+                            allReleases.push({
+                                date: info.date,
+                                name: release.name,
+                                set: release.set || '',
+                                type: release.type,
+                                tcg: tcg.name,
+                                tcgId: tcg.id,
+                                color: tcg.color,
+                                url: tcg.url || null,
+                                region: region,
+                                note: info.note || null
+                            });
+                        }
+                    });
+                });
+            });
+
+            // Sort by date
+            allReleases.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            // Group by month
+            const months = {};
+            allReleases.forEach(release => {
+                const date = new Date(release.date + 'T00:00:00');
+                const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+                const monthLabel = date.toLocaleDateString('pt-PT', { month: 'long', year: 'numeric' });
+                if (!months[monthKey]) {
+                    months[monthKey] = { label: monthLabel, items: [] };
+                }
+                months[monthKey].items.push(release);
+            });
+
+            let html = '';
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            Object.keys(months).sort().forEach(monthKey => {
+                const month = months[monthKey];
+                html += `<div class="timeline-month">`;
+                html += `<h3>${month.label.charAt(0).toUpperCase() + month.label.slice(1)}</h3>`;
+                html += `<div class="timeline-items">`;
+
+                month.items.forEach(release => {
+                    const releaseDate = new Date(release.date + 'T00:00:00');
+                    const isPast = releaseDate < today;
+                    const days = daysUntil(release.date);
+                    let statusClass = isPast ? 'status-released' : 'status-upcoming';
+                    if (release.note) statusClass = 'status-estimated';
+
+                    const setName = release.set ? release.set : '';
+                    const productName = release.name;
+
+                    html += `
+                        <div class="timeline-item${release.url ? ' clickable' : ''}" style="border-left-color: ${release.color}" ${release.url ? `onclick="window.open('${release.url}', '_blank')"` : ''}>
+                            <div class="timeline-date">
+                                <span class="${statusClass}">${formatDateShort(release.date)}</span>
+                                ${!isPast ? `<br><small style="color:var(--text-secondary)">${days}d</small>` : '<br><small style="color:var(--success)">Lançado</small>'}
+                            </div>
+                            <div class="timeline-info">
+                                <span class="tcg-name" style="color:${release.color}">${release.tcg}</span>
+                                <span class="release-name">${productName}</span>
+                                <span class="release-type">${setName}${release.note ? ' - ' + release.note : ''}</span>
+                            </div>
+                            <div class="timeline-regions">
+                                <span class="region-badge ${release.region}">${getRegionLabel(release.region)}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+            });
+
+            container.innerHTML = html || '<p style="text-align:center;color:var(--text-secondary);">Sem resultados para os filtros selecionados.</p>';
+        }
+
+        function renderGrid() {
+            const container = document.getElementById('gridView');
+            let html = '';
+
+            releasesData.tcgs.forEach(tcg => {
+                if (activeFilter !== 'all' && tcg.id !== activeFilter) return;
+
+                html += `
+                    <div class="tcg-section">
+                        <div class="tcg-header" style="border-left-color: ${tcg.color}">
+                            <h2 style="color: ${tcg.color}">${tcg.name}</h2>
+                        </div>
+                        <div class="releases-grid">
+                `;
+
+                tcg.releases.forEach(release => {
+                    html += `
+                        <div class="release-card">
+                            <h3>${release.name}</h3>
+                            <span class="type-badge">${release.type}</span>
+                            <div class="release-dates">
+                    `;
+
+                    const regions = activeRegion === 'all'
+                        ? Object.entries(release.regions)
+                        : [[activeRegion, release.regions[activeRegion]]].filter(([_, v]) => v);
+
+                    regions.forEach(([region, info]) => {
+                        if (!info) return;
+                        const days = info.date ? daysUntil(info.date) : null;
+                        const isPast = days !== null && days <= 0;
+                        let statusHtml = '';
+                        if (info.date === null) {
+                            statusHtml = '<span class="note">N/A</span>';
+                        } else if (isPast) {
+                            statusHtml = `<span class="status-released">Lançado</span>`;
+                        } else {
+                            statusHtml = `<span class="status-upcoming">${days} dias</span>`;
+                        }
+
+                        html += `
+                            <div class="date-row">
+                                <span class="region">${getRegionFlag(region)} ${getRegionLabel(region)}</span>
+                                <span class="date">${info.date ? formatDate(info.date) : 'N/A'}</span>
+                                ${statusHtml}
+                                ${info.note ? `<span class="note">${info.note}</span>` : ''}
+                            </div>
+                        `;
+                    });
+
+                    html += `</div></div>`;
+                });
+
+                html += `</div></div>`;
+            });
+
+            container.innerHTML = html || '<p style="text-align:center;color:var(--text-secondary);">Sem resultados.</p>';
+        }
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
