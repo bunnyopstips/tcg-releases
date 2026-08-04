@@ -162,6 +162,22 @@
             margin-bottom: 15px;
             padding-bottom: 8px;
             border-bottom: 1px solid #334155;
+            user-select: none;
+        }
+
+        .timeline-month h3 .toggle-arrow {
+            font-size: 0.8rem;
+            margin-left: 8px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .timeline-month.collapsed h3 .toggle-arrow {
+            transform: rotate(-90deg);
+        }
+
+        .timeline-month.collapsed .timeline-items {
+            display: none;
         }
 
         .timeline-items {
@@ -848,7 +864,7 @@
             Object.keys(months).sort().forEach(monthKey => {
                 const month = months[monthKey];
                 html += `<div class="timeline-month">`;
-                html += `<h3>${month.label.charAt(0).toUpperCase() + month.label.slice(1)}</h3>`;
+                html += `<h3 onclick="this.parentElement.classList.toggle('collapsed')" style="cursor:pointer">${month.label.charAt(0).toUpperCase() + month.label.slice(1)} <span class="toggle-arrow">▼</span></h3>`;
                 html += `<div class="timeline-items">`;
 
                 month.items.forEach(release => {
