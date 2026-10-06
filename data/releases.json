@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-05",
+  "last_updated": "2026-10-06",
   "tcgs": [
     {
       "id": "pokemon",
@@ -1127,6 +1127,38 @@
             },
             "japan": {
               "date": "2026-11-09"
+            }
+          }
+        },
+        {
+          "set": "Nauctis: The Sunken Realm",
+          "name": "Play Booster Box",
+          "type": "Booster Box",
+          "regions": {
+            "usa": {
+              "date": "2027-02-05"
+            },
+            "europe": {
+              "date": "2027-02-05"
+            },
+            "japan": {
+              "date": "2027-02-05"
+            }
+          }
+        },
+        {
+          "set": "Nauctis: The Sunken Realm",
+          "name": "Collector Booster Box",
+          "type": "Collector Box",
+          "regions": {
+            "usa": {
+              "date": "2027-02-05"
+            },
+            "europe": {
+              "date": "2027-02-05"
+            },
+            "japan": {
+              "date": "2027-02-05"
             }
           }
         }
