@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-09",
+  "last_updated": "2026-10-10",
   "tcgs": [
     {
       "id": "pokemon",
@@ -1159,6 +1159,38 @@
             },
             "japan": {
               "date": "2027-02-05"
+            }
+          }
+        },
+        {
+          "set": "Marvel: Darkhold Destiny",
+          "name": "Play Booster Box",
+          "type": "Booster Box",
+          "regions": {
+            "usa": {
+              "date": "2027-04-09"
+            },
+            "europe": {
+              "date": "2027-04-09"
+            },
+            "japan": {
+              "date": "2027-04-09"
+            }
+          }
+        },
+        {
+          "set": "Marvel: Darkhold Destiny",
+          "name": "Collector Booster Box",
+          "type": "Collector Box",
+          "regions": {
+            "usa": {
+              "date": "2027-04-09"
+            },
+            "europe": {
+              "date": "2027-04-09"
+            },
+            "japan": {
+              "date": "2027-04-09"
             }
           }
         }
